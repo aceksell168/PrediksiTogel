@@ -3,495 +3,738 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediksi Togel Generator</title>
+    <title>Generator Prediksi Togel | </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3949ab;
-            --secondary: #ffcc00;
-            --accent: #ff416c;
-            --dark: #0f1525;
-            --darker: #0a0e1a;
-            --light: #f5f5f5;
-            --success: #00c853;
-            --warning: #ff9800;
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #06d6a0;
+            --accent: #ef476f;
+            --dark: #121826;
+            --darker: #0a0d14;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --info: #118ab2;
+            
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --card-border: rgba(67, 97, 238, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+            --transition-slow: 350ms ease;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
             color: var(--light);
             min-height: 100vh;
-            padding: 20px;
-            transition: background 0.5s ease;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(239, 71, 111, 0.1) 0%, transparent 20%);
         }
         
-        body.bg1 {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
+        /* Background Themes */
+        body.theme-dark { background: var(--darker); }
+        body.theme-blue { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        body.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
+        body.theme-green { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); }
         
-        body.bg2 {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-        }
-        
-        body.bg3 {
-            background: linear-gradient(135deg, #23074d 0%, #cc5333 100%);
-        }
-        
-        body.bg4 {
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-        }
-        
-        .container {
-            max-width: 1200px;
+        /* Container */
+        .app-container {
+            max-width: 1400px;
             margin: 0 auto;
-            background: rgba(15, 21, 37, 0.85);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            padding: 20px;
         }
         
-        header {
-            text-align: center;
+        /* Header */
+        .app-header {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            padding: 30px 40px;
             margin-bottom: 30px;
-            padding: 25px;
-            background: rgba(15, 21, 37, 0.9);
-            border-radius: 20px;
-            border: 1px solid rgba(57, 73, 171, 0.5);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
         }
         
-        header::before {
+        .app-header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--accent), var(--secondary));
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
         }
         
-        h1 {
-            color: var(--secondary);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-            letter-spacing: 1px;
-        }
-        
-        .pool-title-container {
+        .logo-container {
             display: flex;
             align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .header-info {
+            display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
         
-        .pool-title {
-            font-size: 2rem;
+        .current-pool {
+            background: var(--glass-bg);
+            padding: 15px 25px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .pool-name {
+            font-size: 22px;
+            font-weight: 700;
             color: var(--secondary);
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-            min-height: 60px;
+            margin-bottom: 5px;
+        }
+        
+        .pool-time {
+            color: var(--gray);
+            font-size: 14px;
             display: flex;
             align-items: center;
+            gap: 8px;
         }
         
-        .pool-select-info {
-            background: rgba(255, 65, 108, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
-            margin: 15px auto;
-            max-width: 600px;
-            border: 1px solid rgba(255, 65, 108, 0.4);
-            font-size: 0.9rem;
+        .date-time-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 200px;
+        }
+        
+        .current-date {
+            background: var(--glass-bg);
+            padding: 15px 25px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--glass-border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary);
             text-align: center;
         }
         
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .search-box {
-            display: flex;
-            width: 100%;
-            max-width: 700px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .search-box input {
-            flex: 1;
-            padding: 18px 25px;
-            border: none;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .search-box button {
-            padding: 0 30px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
+        .realtime-clock {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(239, 71, 111, 0.2));
+            padding: 15px 25px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--glass-border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
             font-weight: 600;
-            transition: all 0.3s;
-            font-size: 1.1rem;
+            color: var(--accent);
+            text-align: center;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .search-box button:hover {
-            background: #283593;
-            padding: 0 35px;
-        }
-        
-        .bg-customizer {
-            display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .bg-input {
-            display: flex;
-            align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 10px 20px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 600px;
         }
         
-        .bg-input label {
-            color: var(--secondary);
-            font-weight: 500;
-            white-space: nowrap;
+        /* Control Panel */
+        .control-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-md);
         }
         
-        .bg-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
-            font-family: 'Poppins', sans-serif;
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
         
-        .bg-input button {
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+        .panel-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .section-title {
+            font-size: 16px;
             font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .bg-input button:hover {
-            background: #283593;
-        }
-        
-        .date-customizer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .date-input {
+            color: var(--secondary);
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 10px 20px;
-            border-radius: 10px;
         }
         
-        .date-input label {
-            color: var(--secondary);
+        .section-title i {
+            font-size: 18px;
+        }
+        
+        /* Input Groups */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .input-label {
+            font-size: 14px;
             font-weight: 500;
+            color: var(--gray);
         }
         
-        .date-input input, .date-input select {
-            padding: 8px 15px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
+        /* Style khusus untuk dropdown yang terlihat jelas */
+        .select-field {
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 50px;
+            transition: var(--transition-normal);
+        }
+        
+        .select-field:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
+        }
+        
+        .select-field option {
+            background: var(--dark);
+            color: var(--light);
+            padding: 10px;
+        }
+        
+        .date-inputs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-md);
         }
         
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--light);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #d6336c);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #05a17c);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Main Content */
         .main-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr 400px;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
-        .card {
-            background: rgba(15, 21, 37, 0.9);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(57, 73, 171, 0.3);
-            transition: transform 0.3s;
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card h2 {
-            color: var(--secondary);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+        /* Predictions Card */
+        .predictions-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-lg);
         }
         
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
             flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            display: flex;
+            align-items: center;
             gap: 15px;
         }
         
-        .btn-acak {
-            background: linear-gradient(45deg, var(--accent), #ff4b2b);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .card-title i {
+            color: var(--secondary);
+            font-size: 26px;
         }
         
-        .btn-acak:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+        .prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         
         .prediction-item {
-            margin-bottom: 22px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-normal);
         }
         
-        .prediction-item:last-child {
-            border-bottom: none;
+        .prediction-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
         }
         
         .pred-label {
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            display: block;
-            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pred-label i {
+            color: var(--secondary);
         }
         
         .pred-value {
-            font-size: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
             font-weight: 700;
-            color: #4fc3f7;
-            letter-spacing: 2px;
+            color: var(--light);
+            line-height: 1.3;
             word-break: break-word;
-            font-family: 'Orbitron', monospace;
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
-            min-height: 40px;
-            display: flex;
-            align-items: center;
+        }
+        
+        .pred-value.number {
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
         }
         
         .shio-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             margin-top: 15px;
         }
         
-        .shio {
-            background: linear-gradient(45deg, var(--primary), #5c6bc0);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 1rem;
+        .shio-tag {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(57, 73, 171, 0.3);
-        }
-        
-        .footer-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .btn-copy {
-            background: linear-gradient(45deg, #00b09b, #96c93d);
             color: white;
-            border: none;
-            padding: 18px 35px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Pools Sidebar */
+        .pools-sidebar {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-lg);
+            height: fit-content;
+            position: sticky;
+            top: 30px;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--light);
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 8px 20px rgba(0, 176, 155, 0.3);
-            font-family: 'Poppins', sans-serif;
         }
         
-        .btn-copy:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 176, 155, 0.5);
+        .search-box {
+            position: relative;
+            margin-bottom: 25px;
         }
         
-        .pool-list {
-            max-height: 500px;
+        .search-input {
+            width: 100%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 14px 50px 14px 18px;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: var(--transition-normal);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            pointer-events: none;
+        }
+        
+        .pools-list {
+            max-height: 600px;
             overflow-y: auto;
-            margin-top: 20px;
+            padding-right: 10px;
         }
         
-        .pool-list::-webkit-scrollbar {
-            width: 8px;
+        .pools-list::-webkit-scrollbar {
+            width: 6px;
         }
         
-        .pool-list::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+        .pools-list::-webkit-scrollbar-track {
+            background: var(--glass-bg);
             border-radius: 10px;
         }
         
-        .pool-list::-webkit-scrollbar-thumb {
+        .pools-list::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 10px;
         }
         
         .pool-item {
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 10px;
-            border-radius: 12px;
-            transition: all 0.3s;
+            background: var(--glass-bg);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--glass-border);
             cursor: pointer;
-            border: 1px solid transparent;
+            transition: var(--transition-normal);
             position: relative;
         }
         
         .pool-item:hover {
-            background: rgba(57, 73, 171, 0.2);
-            border-color: rgba(57, 73, 171, 0.5);
+            background: rgba(67, 97, 238, 0.1);
+            border-color: var(--primary);
             transform: translateX(5px);
         }
         
-        .pool-item.selected {
-            background: rgba(57, 73, 171, 0.4);
-            border-left: 5px solid var(--secondary);
-            box-shadow: 0 5px 15px rgba(57, 73, 171, 0.3);
+        .pool-item.active {
+            background: rgba(67, 97, 238, 0.2);
+            border-color: var(--primary);
+            border-left: 4px solid var(--secondary);
         }
         
-        .pool-item.selected::after {
-            content: '✓';
+        .pool-item.active::after {
+            content: '';
             position: absolute;
-            right: 20px;
+            right: 18px;
             top: 50%;
             transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
             background: var(--secondary);
-            color: var(--dark);
-            width: 25px;
-            height: 25px;
             border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .pool-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--light);
+        }
+        
+        /* Footer */
+        .app-footer {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-lg);
+            margin-top: 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .copy-format {
+            background: var(--glass-bg);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .format-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gray-light);
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(6, 214, 160, 0.1));
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--card-border);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-size: 20px;
+            color: white;
         }
         
-        .pool-item h4 {
-            color: var(--secondary);
+        .contact-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--light);
             margin-bottom: 5px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
         }
         
-        .pool-item p {
-            color: #aaa;
-            font-size: 0.95rem;
+        .contact-text p {
+            font-size: 14px;
+            color: var(--gray);
         }
         
-        .date-info {
-            display: flex;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px 25px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .date-info div {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-        
-        .notification {
+        /* Theme Selector */
+        .theme-selector {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--success);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .theme-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-border);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .theme-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-btn.active {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.3);
+        }
+        
+        /* Notifications */
+        .notification {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), #05a17c);
             color: white;
             padding: 20px 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
             display: none;
             z-index: 1000;
             animation: slideIn 0.5s ease-out;
             max-width: 400px;
+        }
+        
+        .notification.error {
+            background: linear-gradient(135deg, var(--danger), #d6336c);
+        }
+        
+        .notification.warning {
+            background: linear-gradient(135deg, var(--warning), #ffb142);
         }
         
         @keyframes slideIn {
@@ -499,266 +742,371 @@
             to { transform: translateX(0); opacity: 1; }
         }
         
-        .bg-preset {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1001;
-        }
-        
-        .bg-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid white;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .bg-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .bg-btn.active {
-            box-shadow: 0 0 0 3px var(--secondary);
-        }
-        
-        .bg-btn.bg1 {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        
-        .bg-btn.bg2 {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-        }
-        
-        .bg-btn.bg3 {
-            background: linear-gradient(135deg, #23074d 0%, #cc5333 100%);
-        }
-        
-        .bg-btn.bg4 {
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-        }
-        
-        .auto-random-indicator {
-            display: inline-block;
-            margin-left: 10px;
-            font-size: 0.8rem;
-            color: #4fc3f7;
-            background: rgba(79, 195, 247, 0.2);
-            padding: 3px 8px;
-            border-radius: 10px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
+            .app-container {
+                padding: 15px;
             }
             
-            h1 {
-                font-size: 2rem;
+            .app-header {
+                padding: 25px;
             }
             
-            .pool-title {
-                font-size: 1.6rem;
-            }
-            
-            .card-header {
+            .header-info {
                 flex-direction: column;
                 align-items: stretch;
             }
             
-            .footer-buttons {
-                flex-direction: column;
-                align-items: center;
+            .date-time-container {
+                width: 100%;
             }
             
-            .bg-preset {
-                top: 10px;
-                right: 10px;
+            .date-inputs {
+                grid-template-columns: 1fr;
             }
             
-            .bg-btn {
-                width: 30px;
-                height: 30px;
+            .predictions-card {
+                padding: 25px;
             }
             
-            .container {
-                padding: 15px;
+            .prediction-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pools-sidebar {
+                padding: 25px;
+            }
+            
+            .app-footer {
+                padding: 30px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theme-selector {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .theme-btn {
+                width: 45px;
+                height: 45px;
             }
         }
         
-        .copy-format-info {
-            background: rgba(57, 73, 171, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid rgba(57, 73, 171, 0.4);
-            font-size: 0.9rem;
+        /* Additional Effects */
+        .glow-effect {
+            position: relative;
         }
         
-        .copy-format-info h4 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-            font-family: 'Orbitron', sans-serif;
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition-normal);
         }
         
-        .copy-format-info pre {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-size: 0.85rem;
-            color: #4fc3f7;
+        .glow-effect:hover::after {
+            opacity: 0.3;
+            filter: blur(8px);
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .badge-success {
+            background: rgba(6, 214, 160, 0.2);
+            color: var(--success);
+        }
+        
+        .badge-info {
+            background: rgba(17, 138, 178, 0.2);
+            color: var(--info);
         }
     </style>
 </head>
-<body class="bg1">
-    <div class="bg-preset">
-        <div class="bg-btn bg1 active" data-bg="bg1"></div>
-        <div class="bg-btn bg2" data-bg="bg2"></div>
-        <div class="bg-btn bg3" data-bg="bg3"></div>
-        <div class="bg-btn bg4" data-bg="bg4"></div>
-    </div>
-    
-    <div class="container">
-        <header>
-            <h1><i class="fas fa-dice"></i> TOGEL PREDICTION GENERATOR</h1>
-            
-            <div class="date-info">
-                <div id="currentDate">KAMIS, 29 January 2026</div>
-            </div>
-        </header>
-        
-        <div class="bg-customizer">
-            <div class="bg-input">
-                <label for="bgUrlInput"><i class="fas fa-image"></i> Custom Background URL:</label>
-                <input type="text" id="bgUrlInput" placeholder="Masukkan URL gambar background...">
-                <button id="applyBgBtn">Terapkan</button>
-            </div>
-        </div>
-        
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchPool" placeholder="Cari pools togel...">
-                <button id="searchBtn"><i class="fas fa-search"></i> Cari</button>
-            </div>
-        </div>
-        
-        <div class="date-customizer">
-            <div class="date-input">
-                <label for="hariSelect">Hari:</label>
-                <select id="hariSelect">
-                    <option value="SENIN">SENIN</option>
-                    <option value="SELASA">SELASA</option>
-                    <option value="RABU">RABU</option>
-                    <option value="KAMIS" selected>KAMIS</option>
-                    <option value="JUMAT">JUMAT</option>
-                    <option value="SABTU">SABTU</option>
-                    <option value="MINGGU">MINGGU</option>
-                </select>
+<body class="theme-dark">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Ane Awak</h1>
+                    <p>Bujang</p>
+                </div>
             </div>
             
-            <div class="date-input">
-                <label for="tanggalSelect">Tanggal:</label>
-                <input type="number" id="tanggalSelect" min="1" max="31" value="29">
-            </div>
-            
-            <div class="date-input">
-                <label for="bulanSelect">Bulan:</label>
-                <select id="bulanSelect">
-                    <option value="January" selected>January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select>
-            </div>
-            
-            <div class="date-input">
-                <label for="tahunSelect">Tahun:</label>
-                <input type="number" id="tahunSelect" min="2023" max="2030" value="2026">
-            </div>
-        </div>
-        
-        <div class="main-content">
-            <div class="card">
-                <div class="card-header">
-                    <div class="pool-title" id="poolTitle">PREDIKSI TOTO MACAU PAGI</div>
-                    <button class="btn-acak" id="acakSemua"><i class="fas fa-random"></i> Acak Semua</button>
-                </div>
-                
-                <!-- BBFS sebagai kategori prediksi terpisah -->
-                <div class="prediction-item">
-                    <span class="pred-label">BBFS</span>
-                    <div class="pred-value" id="bbfsValue">00351297</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">AM</span>
-                    <div class="pred-value" id="amValue">15193</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">4D (BB)</span>
-                    <div class="pred-value" id="4dValue">9428 4162 7596 8120</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">3D (BB)</span>
-                    <div class="pred-value" id="3dValue">013 584 499 291</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">2D (BB)</span>
-                    <div class="pred-value" id="2dValue">21 84 39 09 19 41 05 15</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">COLOK BEBAS</span>
-                    <div class="pred-value" id="colokBebas">7 / 7</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">COLOK BEBAS 2D</span>
-                    <div class="pred-value" id="colokBebas2d">61 / 06 / 66</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">TWIN</span>
-                    <div class="pred-value" id="twinValue">44 / 44 / 11</div>
-                </div>
-                
-                <div class="prediction-item">
-                    <span class="pred-label">SHIO</span>
-                    <div class="pred-value" id="shioValue">HARIMAU / HARIMAU / KUDA</div>
-                    <div class="shio-container" id="shioContainer">
-                        <div class="shio">HARIMAU</div>
-                        <div class="shio">HARIMAU</div>
-                        <div class="shio">KUDA</div>
+            <div class="header-info">
+                <div class="current-pool">
+                    <div class="pool-name" id="currentPoolName">TOTO MACAU PAGI</div>
+                    <div class="pool-time">
+                        <i class="far fa-clock"></i>
+                        <span id="currentPoolTime">Pagi - Draw Langsung</span>
                     </div>
                 </div>
                 
-                <div class="copy-format-info">
-                    <h4><i class="far fa-copy"></i> Format yang akan disalin:</h4>
-                    <pre id="copyFormatPreview">
+                <div class="date-time-container">
+                    <div class="current-date" id="currentDate">
+                        KAMIS, 29 Januari 2026
+                    </div>
+                    <div class="realtime-clock" id="realtimeClock">
+                        <i class="fas fa-clock"></i>
+                        <span id="clockTime">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <div class="panel-grid">
+                <div class="panel-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-sliders-h"></i> Kontrol Prediksi
+                    </h3>
+                    
+                    <div class="input-group">
+                        <button class="btn btn-accent" id="generateAllBtn">
+                            <i class="fas fa-random"></i> Generate Semua Angka
+                        </button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <button class="btn btn-success" id="copyAllBtn">
+                            <i class="far fa-copy"></i> Salin Prediksi Lengkap
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3 class="section-title">
+                        <i class="far fa-calendar-alt"></i> Pengaturan Tanggal
+                    </h3>
+                    
+                    <div class="date-inputs">
+                        <div class="input-group">
+                            <label class="input-label">Hari</label>
+                            <select class="select-field" id="daySelect">
+                                <option value="SENIN">SENIN</option>
+                                <option value="SELASA">SELASA</option>
+                                <option value="RABU">RABU</option>
+                                <option value="KAMIS" selected>KAMIS</option>
+                                <option value="JUMAT">JUMAT</option>
+                                <option value="SABTU">SABTU</option>
+                                <option value="MINGGU">MINGGU</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Tanggal</label>
+                            <input type="number" class="select-field" id="dateSelect" min="1" max="31" value="29">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Bulan</label>
+                            <select class="select-field" id="monthSelect">
+                                <option value="Januari" selected>Januari</option>
+                                <option value="Februari">Februari</option>
+                                <option value="Maret">Maret</option>
+                                <option value="April">April</option>
+                                <option value="Mei">Mei</option>
+                                <option value="Juni">Juni</option>
+                                <option value="Juli">Juli</option>
+                                <option value="Agustus">Agustus</option>
+                                <option value="September">September</option>
+                                <option value="Oktober">Oktober</option>
+                                <option value="November">November</option>
+                                <option value="Desember">Desember</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Tahun</label>
+                            <input type="number" class="select-field" id="yearSelect" min="2024" max="2030" value="2026">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-random"></i> Pengaturan Auto
+                    </h3>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Auto Generate</label>
+                        <select class="select-field" id="autoGenerateSelect">
+                            <option value="true" selected>Aktif</option>
+                            <option value="false">Nonaktif</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Predictions Card -->
+            <main class="predictions-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-calculator"></i> Prediksi Angka
+                        <span class="badge badge-success" id="autoUpdateBadge">Auto Update</span>
+                    </h2>
+                    
+                    <div class="card-actions">
+                        <button class="btn btn-primary" id="refreshSingleBtn">
+                            <i class="fas fa-redo"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="prediction-grid">
+                    <!-- BBFS -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-layer-group"></i> BBFS
+                        </div>
+                        <div class="pred-value number" id="bbfsValue">00351297</div>
+                    </div>
+                    
+                    <!-- AM -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-hashtag"></i> AM
+                        </div>
+                        <div class="pred-value number" id="amValue">15193</div>
+                    </div>
+                    
+                    <!-- 4D -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-dice-four"></i> 4D (BB)
+                        </div>
+                        <div class="pred-value number" id="fourDValue">9428 4162 7596 8120</div>
+                    </div>
+                    
+                    <!-- 3D -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-dice-three"></i> 3D (BB)
+                        </div>
+                        <div class="pred-value number" id="threeDValue">013 584 499 291</div>
+                    </div>
+                    
+                    <!-- 2D -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-dice-two"></i> 2D (BB)
+                        </div>
+                        <div class="pred-value number" id="twoDValue">21 84 39 09 19 41 05 15</div>
+                    </div>
+                    
+                    <!-- Colok Bebas -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-bullseye"></i> COLOK BEBAS
+                        </div>
+                        <div class="pred-value number" id="colokBebasValue">7 / 7</div>
+                    </div>
+                    
+                    <!-- Colok Bebas 2D -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-crosshairs"></i> COLOK BEBAS 2D
+                        </div>
+                        <div class="pred-value number" id="colokBebas2dValue">61 / 06 / 66</div>
+                    </div>
+                    
+                    <!-- Twin -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-gem"></i> TWIN
+                        </div>
+                        <div class="pred-value number" id="twinValue">44 / 44 / 11</div>
+                    </div>
+                    
+                    <!-- Shio -->
+                    <div class="prediction-item glow-effect">
+                        <div class="pred-label">
+                            <i class="fas fa-paw"></i> SHIO
+                        </div>
+                        <div class="pred-value" id="shioValue">HARIMAU / HARIMAU / KUDA</div>
+                        <div class="shio-container" id="shioContainer">
+                            <span class="shio-tag">HARIMAU</span>
+                            <span class="shio-tag">HARIMAU</span>
+                            <span class="shio-tag">KUDA</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Pools Sidebar -->
+            <aside class="pools-sidebar">
+                <div class="sidebar-header">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-list-ul"></i> Daftar Pools
+                    </h3>
+                    <span class="badge badge-info" id="poolsCount">50 Pools</span>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" class="search-input" id="poolsSearch" placeholder="Cari pools...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <div class="pools-list" id="poolsList">
+                    <!-- Pools akan di-load via JavaScript -->
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-grid">
+                <!-- Copy Format -->
+                <div class="footer-section">
+                    <h4 class="footer-title">
+                        <i class="far fa-copy"></i> Format Salinan
+                    </h4>
+                    
+                    <div class="copy-format">
+                        <div class="format-preview" id="copyFormat">
 PREDIKSI TOTO MACAU PAGI
-KAMIS, 29 January 2026
+KAMIS, 29 Januari 2026
 BBFS : 00351297
 AM : 15193
 4D ( BB ) : 9428 4162 7596 8120
@@ -769,107 +1117,159 @@ COLOK BEBAS 2D : 61 / 06 / 66
 TWIN : 44 / 44 / 11
 SHIO : HARIMAU / HARIMAU / KUDA
 
-Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI</pre>
+Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
+                        </div>
+                        
+                        <button class="btn btn-success" id="copyFormatBtn">
+                            <i class="far fa-copy"></i> Salin Format
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4 class="footer-title">
+                        <i class="fas fa-headset"></i> Kontak & Support
+                    </h4>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telegram Resmi</h4>
+                                <p>@BelumAdaIdTeleAne</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Admin Professional</h4>
+                                <p>Tersedia 24/7 untuk konsultasi</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="contactBtn">
+                            <i class="fab fa-telegram"></i> Hubungi via Telegram
+                        </button>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <h2>POOLS LIST <span id="poolCount">(30 pools)</span></h2>
-                <div class="pool-select-info">
-                    Pilih pool untuk generate prediksi <span class="auto-random-indicator">Auto Random Aktif</span>
-                </div>
-                <div class="pool-list" id="poolList">
-                    <!-- Pool items will be loaded here -->
-                </div>
+            <!-- Copyright -->
+            <div class="footer-credits">
+                <p style="text-align: center; color: var(--gray); font-size: 14px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
+                    <i class="far fa-copyright"></i> Generator Togel | Generator Prediksi | 
+                    <span style="color: var(--secondary);">Angka hanyalah prediksi, gunakan dengan bijak</span>
+                </p>
             </div>
-        </div>
-        
-        <div class="footer-buttons">
-            <button class="btn-copy" id="copyPrediksi"><i class="far fa-copy"></i> COPY BUJANG</button>
-        </div>
-        
-        <div class="credit">
-           <div class="btn-wrapper">
-  <a href="https://raw.githubusercontent.com/aceksell168/PrediksiTogel/main/Screenshot_4.png" class="btn-tele">
-    <i class="fab fa-telegram"></i> Hubungi Tele Resmi Ane Jit <strong>HARWINDEEPSINGH</strong>
-  </a>
-</div>
-        </div>
+        </footer>
     </div>
     
+    <!-- Theme Selector -->
+    <div class="theme-selector">
+        <button class="theme-btn active" data-theme="dark" title="Dark Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="theme-btn" data-theme="blue" title="Blue Theme">
+            <i class="fas fa-droplet"></i>
+        </button>
+        <button class="theme-btn" data-theme="purple" title="Purple Theme">
+            <i class="fas fa-gem"></i>
+        </button>
+        <button class="theme-btn" data-theme="green" title="Green Theme">
+            <i class="fas fa-leaf"></i>
+        </button>
+    </div>
+    
+    <!-- Notification -->
     <div class="notification" id="notification">
         <i class="fas fa-check-circle"></i> <span id="notificationText">Berhasil disalin ke clipboard!</span>
     </div>
-
+    
     <script>
-        // Daftar pools togel
-        const pools = [
-            { name: "HOKI DRAW", time: "", desc: "Draw langsung" },
-            { name: "TOTO MACAU PAGI", time: "Pagi", desc: "Macau morning draw" },
-            { name: "KENTUCKY MIDDAY", time: "Midday", desc: "Kentucky midday draw" },
-            { name: "FLORIDA MIDDAY", time: "Midday", desc: "Florida midday draw" },
-            { name: "HUAHIN0100", time: "01:00", desc: "Huahin draw" },
-            { name: "BANGKOK 0130", time: "01:30", desc: "Bangkok draw" },
-            { name: "NEW YORK MIDDAY", time: "Midday", desc: "New York midday draw" },
-            { name: "NORTH CAROLINA DAY", time: "Day", desc: "North Carolina day draw" },
-            { name: "BRUNEI02", time: "02:00", desc: "Brunei draw" },
-            { name: "OREGON 03", time: "03:00", desc: "Oregon draw" },
-            { name: "OREGON 06", time: "06:00", desc: "Oregon draw" },
-            { name: "CALIFORNIA", time: "Various", desc: "California draw" },
-            { name: "FLORIDA EVENING", time: "Evening", desc: "Florida evening draw" },
-            { name: "OREGON 09", time: "09:00", desc: "Oregon draw" },
-            { name: "BANGKOK 0930", time: "09:30", desc: "Bangkok draw" },
-            { name: "NEW YORK EVENING", time: "Evening", desc: "New York evening draw" },
-            { name: "KENTUCKY EVENING", time: "Evening", desc: "Kentucky evening draw" },
-            { name: "CAROLINA EVENING", time: "Evening", desc: "Carolina evening draw" },
-            { name: "TOTO CAMBODIA LIVE", time: "Live", desc: "Cambodia live draw" },
-            { name: "CHELSEA11", time: "11:00", desc: "Chelsea draw" },
-            { name: "OREGON 12", time: "12:00", desc: "Oregon draw" },
-            { name: "POIPET12", time: "12:00", desc: "Poipet draw" },
-            { name: "BULLSEYE", time: "Various", desc: "Bullseye draw" },
-            { name: "TOTO MACAU SIANG", time: "Siang", desc: "Macau afternoon draw" },
-            { name: "SYDNEY", time: "Various", desc: "Sydney draw" },
-            { name: "BRUNEI14", time: "14:00", desc: "Brunei draw" },
-            { name: "CHELSEA15", time: "15:00", desc: "Chelsea draw" },
-            { name: "TOTOMALI1530", time: "15:30", desc: "Totomal draw" },
-            { name: "POIPET15", time: "15:00", desc: "Poipet draw" },
-            { name: "TOTO MACAU SORE", time: "Sore", desc: "Macau evening draw" },
-            { name: "HUAHIN1630", time: "16:30", desc: "Huahin draw" },
-            { name: "KING KONG4D I", time: "Various", desc: "King Kong 4D draw" },
-            { name: "SINGAPORE TOTO", time: "Various", desc: "Singapore Toto" },
-            { name: "SINGAPORE 4D", time: "Various", desc: "Singapore 4D" },
-            { name: "MAGNUM4D", time: "Various", desc: "Magnum 4D" },
-            { name: "TOTO MACAU MALAM 1", time: "Malam", desc: "Macau night draw 1" },
-            { name: "CHELSEA19", time: "19:00", desc: "Chelsea draw" },
-            { name: "POIPET19", time: "19:00", desc: "Poipet draw" },
-            { name: "PCSO", time: "Various", desc: "Philippine Charity Sweepstakes Office" },
-            { name: "TOTOMALI2030", time: "20:30", desc: "Totomal draw" },
-            { name: "HUAHIN2100", time: "21:00", desc: "Huahin draw" },
-            { name: "CHELSEA21", time: "21:00", desc: "Chelsea draw" },
-            { name: "NEVADA", time: "Various", desc: "Nevada draw" },
-            { name: "BRUNEI21", time: "21:00", desc: "Brunei draw" },
-            { name: "TOTO MACAU MALAM 2", time: "Malam", desc: "Macau night draw 2" },
-            { name: "POIPET22", time: "22:00", desc: "Poipet draw" },
-            { name: "HONGKONG", time: "Various", desc: "Hongkong draw" },
-            { name: "TOTO MACAU MALAM 3", time: "Malam", desc: "Macau night draw 3" },
-            { name: "TOTOMALI2330", time: "23:30", desc: "Totomal draw" },
-            { name: "KING KONG4D II", time: "Various", desc: "King Kong 4D draw II" }
+        // Data pools (tanpa deskripsi dan category)
+        const poolsData = [
+            { id: 1, name: "HOKI DRAW", time: "" },
+            { id: 2, name: "TOTO MACAU PAGI", time: "Pagi" },
+            { id: 3, name: "KENTUCKY MIDDAY", time: "Midday" },
+            { id: 4, name: "FLORIDA MIDDAY", time: "Midday" },
+            { id: 5, name: "HUAHIN0100", time: "01:00" },
+            { id: 6, name: "BANGKOK 0130", time: "01:30" },
+            { id: 7, name: "NEW YORK MIDDAY", time: "Midday" },
+            { id: 8, name: "NORTH CAROLINA DAY", time: "Day" },
+            { id: 9, name: "BRUNEI02", time: "02:00" },
+            { id: 10, name: "OREGON 03", time: "03:00" },
+            { id: 11, name: "OREGON 06", time: "06:00" },
+            { id: 12, name: "CALIFORNIA", time: "Various" },
+            { id: 13, name: "FLORIDA EVENING", time: "Evening" },
+            { id: 14, name: "OREGON 09", time: "09:00" },
+            { id: 15, name: "BANGKOK 0930", time: "09:30" },
+            { id: 16, name: "NEW YORK EVENING", time: "Evening" },
+            { id: 17, name: "KENTUCKY EVENING", time: "Evening" },
+            { id: 18, name: "CAROLINA EVENING", time: "Evening" },
+            { id: 19, name: "TOTO CAMBODIA LIVE", time: "Live" },
+            { id: 20, name: "CHELSEA11", time: "11:00" },
+            { id: 21, name: "OREGON 12", time: "12:00" },
+            { id: 22, name: "POIPET12", time: "12:00" },
+            { id: 23, name: "BULLSEYE", time: "Various" },
+            { id: 24, name: "TOTO MACAU SIANG", time: "Siang" },
+            { id: 25, name: "SYDNEY", time: "Various" },
+            { id: 26, name: "BRUNEI14", time: "14:00" },
+            { id: 27, name: "CHELSEA15", time: "15:00" },
+            { id: 28, name: "TOTOMALI1530", time: "15:30" },
+            { id: 29, name: "POIPET15", time: "15:00" },
+            { id: 30, name: "TOTO MACAU SORE", time: "Sore" },
+            { id: 31, name: "HUAHIN1630", time: "16:30" },
+            { id: 32, name: "KING KONG4D I", time: "Various" },
+            { id: 33, name: "SINGAPORE TOTO", time: "Various" },
+            { id: 34, name: "SINGAPORE 4D", time: "Various" },
+            { id: 35, name: "MAGNUM4D", time: "Various" },
+            { id: 36, name: "TOTO MACAU MALAM 1", time: "Malam" },
+            { id: 37, name: "CHELSEA19", time: "19:00" },
+            { id: 38, name: "POIPET19", time: "19:00" },
+            { id: 39, name: "PCSO", time: "Various" },
+            { id: 40, name: "TOTOMALI2030", time: "20:30" },
+            { id: 41, name: "HUAHIN2100", time: "21:00" },
+            { id: 42, name: "CHELSEA21", time: "21:00" },
+            { id: 43, name: "NEVADA", time: "Various" },
+            { id: 44, name: "BRUNEI21", time: "21:00" },
+            { id: 45, name: "TOTO MACAU MALAM 2", time: "Malam" },
+            { id: 46, name: "POIPET22", time: "22:00" },
+            { id: 47, name: "HONGKONG", time: "Various" },
+            { id: 48, name: "TOTO MACAU MALAM 3", time: "Malam" },
+            { id: 49, name: "TOTOMALI2330", time: "23:30" },
+            { id: 50, name: "KING KONG4D II", time: "Various" }
         ];
 
-        // Daftar shio berdasarkan tahun (2026 adalah tahun Kuda)
+        // Shio list
         const shioList = [
             "TIKUS", "KERBAU", "HARIMAU", "KELINCI", 
             "NAGA", "ULAR", "KUDA", "KAMBING", 
             "MONYET", "AYAM", "ANJING", "BABI"
         ];
-        
-        // Tahun 2026 adalah tahun Kuda (shio ke-7, index 6)
-        let currentShioIndex = 6; // Kuda
-        
-        // Pool yang sedang dipilih
-        let selectedPool = pools[1]; // Default: TOTO MACAU PAGI
-        
-        // Fungsi untuk menghasilkan angka acak
+
+        // Current state
+        let currentPool = poolsData[1]; // Default: TOTO MACAU PAGI
+        let autoUpdateEnabled = true;
+        let lastGenerated = null;
+
+        // Fungsi untuk update jam realtime
+        function updateRealtimeClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clockTime').textContent = timeString;
+        }
+
+        // Utility functions
         function generateRandomNumber(digits) {
             let result = "";
             for (let i = 0; i < digits; i++) {
@@ -877,119 +1277,97 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI</pre>
             }
             return result;
         }
-        
-        // Fungsi untuk menghasilkan BBFS acak
-        function generateBBFS() {
-            return generateRandomNumber(8);
-        }
-        
-        // Fungsi untuk menghasilkan beberapa angka dengan format tertentu
+
         function generateMultipleNumbers(count, digits, separator = " ") {
-            let numbers = [];
+            const numbers = [];
             for (let i = 0; i < count; i++) {
                 numbers.push(generateRandomNumber(digits));
             }
             return numbers.join(separator);
         }
-        
-        // Fungsi untuk menghasilkan 2D numbers
-        function generate2DNumbers(count) {
-            let numbers = [];
-            for (let i = 0; i < count; i++) {
-                numbers.push(generateRandomNumber(2));
-            }
-            return numbers.join(" ");
-        }
-        
-        // Fungsi untuk menentukan shio berdasarkan angka
+
         function getShioFromNumber(number) {
-            // Ambil dua digit terakhir untuk menentukan shio
-            let num = parseInt(number.slice(-2)) % 12;
+            const num = parseInt(number.slice(-2)) % 12;
             return shioList[num];
         }
-        
-        // Fungsi untuk mengacak semua prediksi (termasuk BBFS)
-        function acakSemua() {
-            // Update BBFS (8 digit)
-            const bbfs = generateBBFS();
+
+        // Generate all predictions
+        function generateAllPredictions() {
+            // BBFS
+            const bbfs = generateRandomNumber(8);
             document.getElementById('bbfsValue').textContent = bbfs;
             
-            // AM: 5 digit
+            // AM
             const am = generateRandomNumber(5);
             document.getElementById('amValue').textContent = am;
             
-            // 4D: 4 angka 4 digit
-            const pred4d = generateMultipleNumbers(4, 4);
-            document.getElementById('4dValue').textContent = pred4d;
+            // 4D
+            const fourD = generateMultipleNumbers(4, 4);
+            document.getElementById('fourDValue').textContent = fourD;
             
-            // 3D: 4 angka 3 digit
-            const pred3d = generateMultipleNumbers(4, 3);
-            document.getElementById('3dValue').textContent = pred3d;
+            // 3D
+            const threeD = generateMultipleNumbers(4, 3);
+            document.getElementById('threeDValue').textContent = threeD;
             
-            // 2D: 8 angka 2 digit
-            const pred2d = generate2DNumbers(8);
-            document.getElementById('2dValue').textContent = pred2d;
+            // 2D
+            const twoD = generateMultipleNumbers(8, 2);
+            document.getElementById('twoDValue').textContent = twoD;
             
-            // Colok Bebas: 1 angka
+            // Colok Bebas
             const colok1 = generateRandomNumber(1);
-            document.getElementById('colokBebas').textContent = `${colok1} / ${colok1}`;
+            document.getElementById('colokBebasValue').textContent = `${colok1} / ${colok1}`;
             
-            // Colok Bebas 2D: 3 pasang angka 2 digit
+            // Colok Bebas 2D
             const colok2d1 = generateRandomNumber(2);
             const colok2d2 = generateRandomNumber(2);
-            const colok2d3 = colok2d1[0] + colok2d1[0]; // Angka kembar dari digit pertama colok2d1
-            document.getElementById('colokBebas2d').textContent = `${colok2d1} / ${colok2d2} / ${colok2d3}`;
+            const colok2d3 = colok2d1[0] + colok2d1[0];
+            document.getElementById('colokBebas2dValue').textContent = `${colok2d1} / ${colok2d2} / ${colok2d3}`;
             
-            // Twin: 3 pasang angka kembar
+            // Twin
             const twin1 = generateRandomNumber(1);
             const twin2 = generateRandomNumber(1);
-            const twinValue = `${twin1}${twin1} / ${twin1}${twin1} / ${twin2}${twin2}`;
-            document.getElementById('twinValue').textContent = twinValue;
+            const twin = `${twin1}${twin1} / ${twin1}${twin1} / ${twin2}${twin2}`;
+            document.getElementById('twinValue').textContent = twin;
             
-            // Shio: berdasarkan colok bebas 2D
+            // Shio
             const shio1 = getShioFromNumber(colok2d1);
             const shio2 = getShioFromNumber(colok2d2);
             const shio3 = getShioFromNumber(colok2d3);
-            const shioValue = `${shio1} / ${shio2} / ${shio3}`;
-            document.getElementById('shioValue').textContent = shioValue;
+            const shio = `${shio1} / ${shio2} / ${shio3}`;
+            document.getElementById('shioValue').textContent = shio;
             
-            // Update shio container
-            updateShioContainer(shio1, shio2, shio3);
-            
-            // Update preview format copy
-            updateCopyFormatPreview(
-                bbfs, am, pred4d, pred3d, pred2d, 
-                `${colok1} / ${colok1}`, 
-                `${colok2d1} / ${colok2d2} / ${colok2d3}`, 
-                twinValue, shioValue
-            );
-            
-            // Tampilkan notifikasi
-            showNotification("Semua angka telah diacak!");
-        }
-        
-        // Fungsi untuk update shio container
-        function updateShioContainer(shio1, shio2, shio3) {
-            const shioContainer = document.getElementById('shioContainer');
-            shioContainer.innerHTML = `
-                <div class="shio">${shio1}</div>
-                <div class="shio">${shio2}</div>
-                <div class="shio">${shio3}</div>
+            // Update shio tags
+            document.getElementById('shioContainer').innerHTML = `
+                <span class="shio-tag">${shio1}</span>
+                <span class="shio-tag">${shio2}</span>
+                <span class="shio-tag">${shio3}</span>
             `;
+            
+            // Update copy format
+            updateCopyFormat(bbfs, am, fourD, threeD, twoD, 
+                           `${colok1} / ${colok1}`, 
+                           `${colok2d1} / ${colok2d2} / ${colok2d3}`, 
+                           twin, shio);
+            
+            // Update last generated time
+            lastGenerated = new Date();
+            
+            // Show notification
+            showNotification('Prediksi berhasil di-generate!', 'success');
         }
-        
-        // Fungsi untuk update preview format copy
-        function updateCopyFormatPreview(bbfs, am, pred4d, pred3d, pred2d, colokBebas, colokBebas2d, twin, shio) {
-            const poolName = document.getElementById('poolTitle').textContent.replace('PREDIKSI ', '');
+
+        // Update copy format
+        function updateCopyFormat(bbfs, am, fourD, threeD, twoD, colokBebas, colokBebas2d, twin, shio) {
+            const poolName = currentPool.name;
             const date = document.getElementById('currentDate').textContent;
             
-            const preview = `PREDIKSI ${poolName}
+            const format = `PREDIKSI ${poolName}
 ${date}
 BBFS : ${bbfs}
 AM : ${am}
-4D ( BB ) : ${pred4d}
-3D ( BB ) : ${pred3d}
-2D ( BB ) : ${pred2d}
+4D ( BB ) : ${fourD}
+3D ( BB ) : ${threeD}
+2D ( BB ) : ${twoD}
 COLOK BEBAS : ${colokBebas}
 COLOK BEBAS 2D : ${colokBebas2d}
 TWIN : ${twin}
@@ -997,274 +1375,231 @@ SHIO : ${shio}
 
 Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             
-            document.getElementById('copyFormatPreview').textContent = preview;
+            document.getElementById('copyFormat').textContent = format;
         }
-        
-        // Fungsi untuk mengubah tampilan prediksi berdasarkan pool yang dipilih
-        function selectPool(pool) {
-            selectedPool = pool;
+
+        // Load pools list
+        function loadPoolsList() {
+            const poolsList = document.getElementById('poolsList');
+            const poolsCount = document.getElementById('poolsCount');
             
-            // Update judul dengan nama pool yang dipilih
-            document.getElementById('poolTitle').textContent = `PREDIKSI ${pool.name}`;
+            poolsList.innerHTML = '';
+            poolsCount.textContent = `${poolsData.length} Pools`;
             
-            // Otomatis acak angka ketika pool dipilih
-            acakSemua();
-            
-            // Tampilkan notifikasi
-            showNotification(`Prediksi untuk ${pool.name} telah di-generate!`);
-        }
-        
-        // Fungsi untuk menampilkan pools
-        function loadPools() {
-            const poolList = document.getElementById('poolList');
-            const poolCount = document.getElementById('poolCount');
-            
-            poolList.innerHTML = '';
-            poolCount.textContent = `(${pools.length} pools)`;
-            
-            pools.forEach(pool => {
+            poolsData.forEach(pool => {
                 const poolItem = document.createElement('div');
                 poolItem.className = 'pool-item';
+                poolItem.dataset.id = pool.id;
+                
                 poolItem.innerHTML = `
-                    <h4>${pool.name}</h4>
-                    <p>${pool.desc} ${pool.time ? `- ${pool.time}` : ''}</p>
+                    <div class="pool-item-title">${pool.name}</div>
                 `;
                 
-                // Klik pool untuk memilih
                 poolItem.addEventListener('click', () => {
-                    // Hapus seleksi sebelumnya
+                    // Remove active class from all
                     document.querySelectorAll('.pool-item').forEach(item => {
-                        item.classList.remove('selected');
+                        item.classList.remove('active');
                     });
                     
-                    // Tambah seleksi pada pool yang diklik
-                    poolItem.classList.add('selected');
+                    // Add active class to clicked
+                    poolItem.classList.add('active');
                     
-                    // Pilih pool
-                    selectPool(pool);
+                    // Update current pool
+                    currentPool = pool;
+                    
+                    // Update header
+                    document.getElementById('currentPoolName').textContent = pool.name;
+                    document.getElementById('currentPoolTime').textContent = pool.time ? pool.time : 'Draw Langsung';
+                    
+                    // Auto generate if enabled
+                    if (autoUpdateEnabled) {
+                        generateAllPredictions();
+                    }
+                    
+                    showNotification(`Pool ${pool.name} dipilih`, 'success');
                 });
                 
-                poolList.appendChild(poolItem);
+                poolsList.appendChild(poolItem);
             });
             
-            // Pilih pool default
+            // Set active pool
             setTimeout(() => {
-                // Cari pool TOTO MACAU PAGI
-                const macauPool = Array.from(document.querySelectorAll('.pool-item')).find(item => 
-                    item.querySelector('h4').textContent === 'TOTO MACAU PAGI'
-                );
-                if (macauPool) {
-                    macauPool.classList.add('selected');
+                const defaultPool = document.querySelector('.pool-item[data-id="2"]');
+                if (defaultPool) {
+                    defaultPool.classList.add('active');
                 }
             }, 100);
         }
-        
-        // Fungsi untuk mencari pools
+
+        // Search pools
         function searchPools() {
-            const searchTerm = document.getElementById('searchPool').value.toLowerCase();
+            const searchTerm = document.getElementById('poolsSearch').value.toLowerCase();
             const poolItems = document.querySelectorAll('.pool-item');
             
+            let visibleCount = 0;
+            
             poolItems.forEach(item => {
-                const poolName = item.querySelector('h4').textContent.toLowerCase();
+                const poolName = item.querySelector('.pool-item-title').textContent.toLowerCase();
+                
                 if (poolName.includes(searchTerm)) {
                     item.style.display = 'block';
+                    visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
             });
             
-            // Update count
-            const visibleCount = Array.from(poolItems).filter(item => item.style.display !== 'none').length;
-            document.getElementById('poolCount').textContent = `(${visibleCount} pools ditemukan)`;
+            document.getElementById('poolsCount').textContent = `${visibleCount} Pools ditemukan`;
         }
-        
-        // Fungsi untuk menyalin prediksi ke clipboard
-        function copyPrediksi() {
-            if (!selectedPool) {
-                showNotification("Silakan pilih pool terlebih dahulu!");
-                return;
-            }
-            
-            const poolName = document.getElementById('poolTitle').textContent.replace('PREDIKSI ', '');
-            const date = document.getElementById('currentDate').textContent;
-            const bbfs = document.getElementById('bbfsValue').textContent;
-            const am = document.getElementById('amValue').textContent;
-            const pred4d = document.getElementById('4dValue').textContent;
-            const pred3d = document.getElementById('3dValue').textContent;
-            const pred2d = document.getElementById('2dValue').textContent;
-            const colokBebas = document.getElementById('colokBebas').textContent;
-            const colokBebas2d = document.getElementById('colokBebas2d').textContent;
-            const twin = document.getElementById('twinValue').textContent;
-            const shio = document.getElementById('shioValue').textContent;
-            
-            // Format teks seperti yang diminta
-            const teksPrediksi = `PREDIKSI ${poolName}
-${date}
-BBFS : ${bbfs}
-AM : ${am}
-4D ( BB ) : ${pred4d}
-3D ( BB ) : ${pred3d}
-2D ( BB ) : ${pred2d}
-COLOK BEBAS : ${colokBebas}
-COLOK BEBAS 2D : ${colokBebas2d}
-TWIN : ${twin}
-SHIO : ${shio}
 
-Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
-            
-            // Salin ke clipboard
-            navigator.clipboard.writeText(teksPrediksi).then(() => {
-                showNotification("Prediksi berhasil disalin ke clipboard!");
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-                showNotification("Gagal menyalin ke clipboard");
-            });
-        }
-        
-        // Fungsi untuk update tanggal
+        // Update date
         function updateDate() {
-            const hari = document.getElementById('hariSelect').value;
-            const tanggal = document.getElementById('tanggalSelect').value;
-            const bulan = document.getElementById('bulanSelect').value;
-            const tahun = document.getElementById('tahunSelect').value;
+            const day = document.getElementById('daySelect').value;
+            const date = document.getElementById('dateSelect').value;
+            const month = document.getElementById('monthSelect').value;
+            const year = document.getElementById('yearSelect').value;
             
-            const dateText = `${hari}, ${tanggal} ${bulan} ${tahun}`;
+            const dateText = `${day}, ${date} ${month} ${year}`;
             document.getElementById('currentDate').textContent = dateText;
             
-            // Update preview format copy dengan tanggal baru
-            updateCopyFormatPreview(
-                document.getElementById('bbfsValue').textContent,
-                document.getElementById('amValue').textContent,
-                document.getElementById('4dValue').textContent,
-                document.getElementById('3dValue').textContent,
-                document.getElementById('2dValue').textContent,
-                document.getElementById('colokBebas').textContent,
-                document.getElementById('colokBebas2d').textContent,
-                document.getElementById('twinValue').textContent,
-                document.getElementById('shioValue').textContent
-            );
+            // Update copy format with new date
+            const formatText = document.getElementById('copyFormat').textContent;
+            const lines = formatText.split('\n');
+            lines[1] = dateText;
+            document.getElementById('copyFormat').textContent = lines.join('\n');
         }
-        
-        // Fungsi untuk menampilkan notifikasi
-        function showNotification(message) {
+
+        // Copy format to clipboard
+        function copyToClipboard() {
+            const text = document.getElementById('copyFormat').textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Format prediksi berhasil disalin ke clipboard!', 'success');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showNotification('Gagal menyalin ke clipboard', 'error');
+            });
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             const notificationText = document.getElementById('notificationText');
             
             notificationText.textContent = message;
+            notification.className = `notification ${type}`;
             notification.style.display = 'block';
             
-            // Sembunyikan notifikasi setelah 3 detik
+            // Update icon based on type
+            const icon = notification.querySelector('i');
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle';
+            } else if (type === 'warning') {
+                icon.className = 'fas fa-exclamation-triangle';
+            }
+            
+            // Hide after 3 seconds
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
         }
-        
-        // Fungsi untuk mengganti background preset
-        function changeBackground(bgClass) {
-            // Hapus semua class background
-            document.body.classList.remove('bg1', 'bg2', 'bg3', 'bg4');
+
+        // Change theme
+        function changeTheme(theme) {
+            document.body.className = `theme-${theme}`;
             
-            // Hapus background image jika ada
-            document.body.style.backgroundImage = 'none';
-            
-            // Tambah class background baru
-            document.body.classList.add(bgClass);
-            
-            // Update tombol background aktif
-            document.querySelectorAll('.bg-btn').forEach(btn => {
+            // Update active theme button
+            document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-            
-            // Reset input URL
-            document.getElementById('bgUrlInput').value = '';
         }
-        
-        // Fungsi untuk menerapkan background custom dari URL
-        function applyCustomBackground() {
-            const bgUrl = document.getElementById('bgUrlInput').value.trim();
-            
-            if (bgUrl) {
-                // Hapus semua class background preset
-                document.body.classList.remove('bg1', 'bg2', 'bg3', 'bg4');
-                
-                // Hapus tombol aktif
-                document.querySelectorAll('.bg-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Terapkan background image
-                document.body.style.backgroundImage = `url('${bgUrl}')`;
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundPosition = 'center';
-                document.body.style.backgroundAttachment = 'fixed';
-                
-                showNotification("Background custom telah diterapkan!");
-            } else {
-                showNotification("Masukkan URL gambar terlebih dahulu!");
-            }
-        }
-        
-        // Inisialisasi saat halaman dimuat
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Load pools
-            loadPools();
+            // Start realtime clock
+            updateRealtimeClock();
+            setInterval(updateRealtimeClock, 1000);
             
-            // Update tanggal
+            // Load pools
+            loadPoolsList();
+            
+            // Update date
             updateDate();
             
-            // Event listener untuk tombol acak semua
-            document.getElementById('acakSemua').addEventListener('click', acakSemua);
+            // Generate initial predictions
+            generateAllPredictions();
             
-            // Event listener untuk tombol salin
-            document.getElementById('copyPrediksi').addEventListener('click', copyPrediksi);
+            // Event listeners
+            document.getElementById('generateAllBtn').addEventListener('click', generateAllPredictions);
+            document.getElementById('copyAllBtn').addEventListener('click', copyToClipboard);
+            document.getElementById('copyFormatBtn').addEventListener('click', copyToClipboard);
+            document.getElementById('refreshSingleBtn').addEventListener('click', generateAllPredictions);
             
-            // Event listener untuk tombol search
-            document.getElementById('searchBtn').addEventListener('click', searchPools);
+            // Search
+            document.getElementById('poolsSearch').addEventListener('input', searchPools);
             
-            // Event listener untuk input search (saat tekan enter)
-            document.getElementById('searchPool').addEventListener('keyup', function(event) {
-                if (event.key === 'Enter') {
-                    searchPools();
-                }
+            // Date controls
+            document.getElementById('daySelect').addEventListener('change', updateDate);
+            document.getElementById('dateSelect').addEventListener('change', updateDate);
+            document.getElementById('monthSelect').addEventListener('change', updateDate);
+            document.getElementById('yearSelect').addEventListener('change', updateDate);
+            
+            // Auto generate select
+            document.getElementById('autoGenerateSelect').addEventListener('change', function() {
+                autoUpdateEnabled = this.value === 'true';
+                const badge = document.getElementById('autoUpdateBadge');
+                badge.textContent = autoUpdateEnabled ? 'Auto Update' : 'Manual Mode';
+                badge.className = autoUpdateEnabled ? 'badge badge-success' : 'badge badge-info';
             });
             
-            // Event listener untuk input search (real-time search)
-            document.getElementById('searchPool').addEventListener('input', searchPools);
-            
-            // Event listener untuk perubahan tanggal
-            document.getElementById('hariSelect').addEventListener('change', updateDate);
-            document.getElementById('tanggalSelect').addEventListener('change', updateDate);
-            document.getElementById('bulanSelect').addEventListener('change', updateDate);
-            document.getElementById('tahunSelect').addEventListener('change', updateDate);
-            
-            // Event listener untuk tombol background preset
-            document.querySelectorAll('.bg-btn').forEach(btn => {
+            // Theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    changeBackground(this.getAttribute('data-bg'));
+                    changeTheme(this.dataset.theme);
                 });
             });
             
-            // Event listener untuk tombol apply background custom
-            document.getElementById('applyBgBtn').addEventListener('click', applyCustomBackground);
+            // Contact button
+            document.getElementById('contactBtn').addEventListener('click', function() {
+                const teleLink = "https://t.me/Comingsoon";
+                window.open(teleLink, '_blank');
+                showNotification('Membuka Telegram...', 'success');
+            });
             
-            // Event listener untuk input URL background (enter key)
-            document.getElementById('bgUrlInput').addEventListener('keyup', function(event) {
-                if (event.key === 'Enter') {
-                    applyCustomBackground();
+            // Auto-update every 5 minutes
+            setInterval(() => {
+                if (autoUpdateEnabled) {
+                    generateAllPredictions();
+                }
+            }, 300000); // 5 minutes
+            
+            // Keyboard shortcut hanya Ctrl+G
+            document.addEventListener('keydown', (e) => {
+                // Ctrl + G to generate
+                if (e.ctrlKey && e.key === 'g') {
+                    e.preventDefault();
+                    generateAllPredictions();
                 }
             });
             
-            // Inisialisasi preview format copy dengan angka dari gambar
-            updateCopyFormatPreview(
-                "00351297", "15193", "9428 4162 7596 8120", 
-                "013 584 499 291", "21 84 39 09 19 41 05 15",
-                "7 / 7", "61 / 06 / 66", "44 / 44 / 11",
-                "HARIMAU / HARIMAU / KUDA"
-            );
+            // Add auto-update toggle
+            const autoUpdateBadge = document.getElementById('autoUpdateBadge');
+            autoUpdateBadge.style.cursor = 'pointer';
+            autoUpdateBadge.title = 'Klik untuk toggle auto update';
+            autoUpdateBadge.addEventListener('click', function() {
+                autoUpdateEnabled = !autoUpdateEnabled;
+                document.getElementById('autoGenerateSelect').value = autoUpdateEnabled ? 'true' : 'false';
+                this.textContent = autoUpdateEnabled ? 'Auto Update' : 'Manual Mode';
+                this.className = autoUpdateEnabled ? 'badge badge-success' : 'badge badge-info';
+                showNotification(
+                    autoUpdateEnabled ? 'Auto update diaktifkan' : 'Auto update dimatikan',
+                    autoUpdateEnabled ? 'success' : 'warning'
+                );
+            });
         });
     </script>
 </body>
-
 </html>
-
