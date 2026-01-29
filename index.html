@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Togel Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3949ab;
+            --secondary: #ffcc00;
+            --accent: #ff416c;
+            --dark: #0f1525;
+            --darker: #0a0e1a;
+            --light: #f5f5f5;
+            --success: #00c853;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.5s ease;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        body.bg1 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        body.bg2 {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        }
+        
+        body.bg3 {
+            background: linear-gradient(135deg, #23074d 0%, #cc5333 100%);
+        }
+        
+        body.bg4 {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(15, 21, 37, 0.85);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(15, 21, 37, 0.9);
+            border-radius: 20px;
+            border: 1px solid rgba(57, 73, 171, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+        }
+        
+        h1 {
+            color: var(--secondary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .pool-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .pool-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pool-select-info {
+            background: rgba(255, 65, 108, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 15px auto;
+            max-width: 600px;
+            border: 1px solid rgba(255, 65, 108, 0.4);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .search-box {
+            display: flex;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-box button {
+            padding: 0 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-box button:hover {
+            background: #283593;
+            padding: 0 35px;
+        }
+        
+        .bg-customizer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .bg-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .bg-input label {
+            color: var(--secondary);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .bg-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-input button {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .bg-input button:hover {
+            background: #283593;
+        }
+        
+        .date-customizer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .date-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        .date-input label {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .date-input input, .date-input select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(15, 21, 37, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(57, 73, 171, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .btn-acak {
+            background: linear-gradient(45deg, var(--accent), #ff4b2b);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-acak:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+        }
+        
+        .prediction-item {
+            margin-bottom: 22px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .prediction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pred-label {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .pred-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            letter-spacing: 2px;
+            word-break: break-word;
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shio-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .shio {
+            background: linear-gradient(45deg, var(--primary), #5c6bc0);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(57, 73, 171, 0.3);
+        }
+        
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn-copy {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0, 176, 155, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-copy:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 176, 155, 0.5);
+        }
+        
+        .pool-list {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .pool-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .pool-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .pool-list::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .pool-item {
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            position: relative;
+        }
+        
+        .pool-item:hover {
+            background: rgba(57, 73, 171, 0.2);
+            border-color: rgba(57, 73, 171, 0.5);
+            transform: translateX(5px);
+        }
+        
+        .pool-item.selected {
+            background: rgba(57, 73, 171, 0.4);
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(57, 73, 171, 0.3);
+        }
+        
+        .pool-item.selected::after {
+            content: '✓';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--secondary);
+            color: var(--dark);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .pool-item h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+        
+        .pool-item p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .date-info {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .date-info div {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+            max-width: 400px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .bg-preset {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+        
+        .bg-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .bg-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .bg-btn.active {
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+        
+        .bg-btn.bg1 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .bg-btn.bg2 {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        }
+        
+        .bg-btn.bg3 {
+            background: linear-gradient(135deg, #23074d 0%, #cc5333 100%);
+        }
+        
+        .bg-btn.bg4 {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        
+        .auto-random-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 0.8rem;
+            color: #4fc3f7;
+            background: rgba(79, 195, 247, 0.2);
+            padding: 3px 8px;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pool-title {
+                font-size: 1.6rem;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .footer-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .bg-preset {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .bg-btn {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+        
+        .copy-format-info {
+            background: rgba(57, 73, 171, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(57, 73, 171, 0.4);
+            font-size: 0.9rem;
+        }
+        
+        .copy-format-info h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .copy-format-info pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            color: #4fc3f7;
+        }
+    </style>
+</head>
+<body class="bg1">
+    <div class="bg-preset">
+        <div class="bg-btn bg1 active" data-bg="bg1"></div>
+        <div class="bg-btn bg2" data-bg="bg2"></div>
+        <div class="bg-btn bg3" data-bg="bg3"></div>
+        <div class="bg-btn bg4" data-bg="bg4"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-dice"></i> TOGEL PREDICTION GENERATOR</h1>
+            
+            <div class="date-info">
+                <div id="currentDate">KAMIS, 29 January 2026</div>
+            </div>
+        </header>
+        
+        <div class="bg-customizer">
+            <div class="bg-input">
+                <label for="bgUrlInput"><i class="fas fa-image"></i> Custom Background URL:</label>
+                <input type="text" id="bgUrlInput" placeholder="Masukkan URL gambar background...">
+                <button id="applyBgBtn">Terapkan</button>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchPool" placeholder="Cari pools togel...">
+                <button id="searchBtn"><i class="fas fa-search"></i> Cari</button>
+            </div>
+        </div>
+        
+        <div class="date-customizer">
+            <div class="date-input">
+                <label for="hariSelect">Hari:</label>
+                <select id="hariSelect">
+                    <option value="SENIN">SENIN</option>
+                    <option value="SELASA">SELASA</option>
+                    <option value="RABU">RABU</option>
+                    <option value="KAMIS" selected>KAMIS</option>
+                    <option value="JUMAT">JUMAT</option>
+                    <option value="SABTU">SABTU</option>
+                    <option value="MINGGU">MINGGU</option>
+                </select>
+            </div>
+            
+            <div class="date-input">
+                <label for="tanggalSelect">Tanggal:</label>
+                <input type="number" id="tanggalSelect" min="1" max="31" value="29">
+            </div>
+            
+            <div class="date-input">
+                <label for="bulanSelect">Bulan:</label>
+                <select id="bulanSelect">
+                    <option value="January" selected>January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            
+            <div class="date-input">
+                <label for="tahunSelect">Tahun:</label>
+                <input type="number" id="tahunSelect" min="2023" max="2030" value="2026">
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="pool-title" id="poolTitle">PREDIKSI TOTO MACAU PAGI</div>
+                    <button class="btn-acak" id="acakSemua"><i class="fas fa-random"></i> Acak Semua</button>
+                </div>
+                
+                <!-- BBFS sebagai kategori prediksi terpisah -->
+                <div class="prediction-item">
+                    <span class="pred-label">BBFS</span>
+                    <div class="pred-value" id="bbfsValue">00351297</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">AM</span>
+                    <div class="pred-value" id="amValue">15193</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">4D (BB)</span>
+                    <div class="pred-value" id="4dValue">9428 4162 7596 8120</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">3D (BB)</span>
+                    <div class="pred-value" id="3dValue">013 584 499 291</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">2D (BB)</span>
+                    <div class="pred-value" id="2dValue">21 84 39 09 19 41 05 15</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">COLOK BEBAS</span>
+                    <div class="pred-value" id="colokBebas">7 / 7</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">COLOK BEBAS 2D</span>
+                    <div class="pred-value" id="colokBebas2d">61 / 06 / 66</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">TWIN</span>
+                    <div class="pred-value" id="twinValue">44 / 44 / 11</div>
+                </div>
+                
+                <div class="prediction-item">
+                    <span class="pred-label">SHIO</span>
+                    <div class="pred-value" id="shioValue">HARIMAU / HARIMAU / KUDA</div>
+                    <div class="shio-container" id="shioContainer">
+                        <div class="shio">HARIMAU</div>
+                        <div class="shio">HARIMAU</div>
+                        <div class="shio">KUDA</div>
+                    </div>
+                </div>
+                
+                <div class="copy-format-info">
+                    <h4><i class="far fa-copy"></i> Format yang akan disalin:</h4>
+                    <pre id="copyFormatPreview">
+PREDIKSI TOTO MACAU PAGI
+KAMIS, 29 January 2026
+BBFS : 00351297
+AM : 15193
+4D ( BB ) : 9428 4162 7596 8120
+3D ( BB ) : 013 584 499 291
+2D ( BB ) : 21 84 39 09 19 41 05 15
+COLOK BEBAS : 7 / 7
+COLOK BEBAS 2D : 61 / 06 / 66
+TWIN : 44 / 44 / 11
+SHIO : HARIMAU / HARIMAU / KUDA
+
+Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI</pre>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>POOLS LIST <span id="poolCount">(30 pools)</span></h2>
+                <div class="pool-select-info">
+                    Pilih pool untuk generate prediksi <span class="auto-random-indicator">Auto Random Aktif</span>
+                </div>
+                <div class="pool-list" id="poolList">
+                    <!-- Pool items will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-buttons">
+            <button class="btn-copy" id="copyPrediksi"><i class="far fa-copy"></i> Salin Prediksi</button>
+        </div>
+        
+        <div class="credit">
+            <p>HOKI DRAW | Generator Prediksi Togel © 2026 | Angka hanyalah prediksi, gunakan dengan bijak</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText">Berhasil disalin ke clipboard!</span>
+    </div>
+
+    <script>
+        // Daftar pools togel
+        const pools = [
+            { name: "HOKI DRAW", time: "", desc: "Draw langsung" },
+            { name: "TOTO MACAU PAGI", time: "Pagi", desc: "Macau morning draw" },
+            { name: "KENTUCKY MIDDAY", time: "Midday", desc: "Kentucky midday draw" },
+            { name: "FLORIDA MIDDAY", time: "Midday", desc: "Florida midday draw" },
+            { name: "HUAHIN0100", time: "01:00", desc: "Huahin draw" },
+            { name: "BANGKOK 0130", time: "01:30", desc: "Bangkok draw" },
+            { name: "NEW YORK MIDDAY", time: "Midday", desc: "New York midday draw" },
+            { name: "NORTH CAROLINA DAY", time: "Day", desc: "North Carolina day draw" },
+            { name: "BRUNEI02", time: "02:00", desc: "Brunei draw" },
+            { name: "OREGON 03", time: "03:00", desc: "Oregon draw" },
+            { name: "OREGON 06", time: "06:00", desc: "Oregon draw" },
+            { name: "CALIFORNIA", time: "Various", desc: "California draw" },
+            { name: "FLORIDA EVENING", time: "Evening", desc: "Florida evening draw" },
+            { name: "OREGON 09", time: "09:00", desc: "Oregon draw" },
+            { name: "BANGKOK 0930", time: "09:30", desc: "Bangkok draw" },
+            { name: "NEW YORK EVENING", time: "Evening", desc: "New York evening draw" },
+            { name: "KENTUCKY EVENING", time: "Evening", desc: "Kentucky evening draw" },
+            { name: "CAROLINA EVENING", time: "Evening", desc: "Carolina evening draw" },
+            { name: "TOTO CAMBODIA LIVE", time: "Live", desc: "Cambodia live draw" },
+            { name: "CHELSEA11", time: "11:00", desc: "Chelsea draw" },
+            { name: "OREGON 12", time: "12:00", desc: "Oregon draw" },
+            { name: "POIPET12", time: "12:00", desc: "Poipet draw" },
+            { name: "BULLSEYE", time: "Various", desc: "Bullseye draw" },
+            { name: "TOTO MACAU SIANG", time: "Siang", desc: "Macau afternoon draw" },
+            { name: "SYDNEY", time: "Various", desc: "Sydney draw" },
+            { name: "BRUNEI14", time: "14:00", desc: "Brunei draw" },
+            { name: "CHELSEA15", time: "15:00", desc: "Chelsea draw" },
+            { name: "TOTOMALI1530", time: "15:30", desc: "Totomal draw" },
+            { name: "POIPET15", time: "15:00", desc: "Poipet draw" },
+            { name: "TOTO MACAU SORE", time: "Sore", desc: "Macau evening draw" },
+            { name: "HUAHIN1630", time: "16:30", desc: "Huahin draw" },
+            { name: "KING KONG4D I", time: "Various", desc: "King Kong 4D draw" },
+            { name: "SINGAPORE TOTO", time: "Various", desc: "Singapore Toto" },
+            { name: "SINGAPORE 4D", time: "Various", desc: "Singapore 4D" },
+            { name: "MAGNUM4D", time: "Various", desc: "Magnum 4D" },
+            { name: "TOTO MACAU MALAM 1", time: "Malam", desc: "Macau night draw 1" },
+            { name: "CHELSEA19", time: "19:00", desc: "Chelsea draw" },
+            { name: "POIPET19", time: "19:00", desc: "Poipet draw" },
+            { name: "PCSO", time: "Various", desc: "Philippine Charity Sweepstakes Office" },
+            { name: "TOTOMALI2030", time: "20:30", desc: "Totomal draw" },
+            { name: "HUAHIN2100", time: "21:00", desc: "Huahin draw" },
+            { name: "CHELSEA21", time: "21:00", desc: "Chelsea draw" },
+            { name: "NEVADA", time: "Various", desc: "Nevada draw" },
+            { name: "BRUNEI21", time: "21:00", desc: "Brunei draw" },
+            { name: "TOTO MACAU MALAM 2", time: "Malam", desc: "Macau night draw 2" },
+            { name: "POIPET22", time: "22:00", desc: "Poipet draw" },
+            { name: "HONGKONG", time: "Various", desc: "Hongkong draw" },
+            { name: "TOTO MACAU MALAM 3", time: "Malam", desc: "Macau night draw 3" },
+            { name: "TOTOMALI2330", time: "23:30", desc: "Totomal draw" },
+            { name: "KING KONG4D II", time: "Various", desc: "King Kong 4D draw II" }
+        ];
+
+        // Daftar shio berdasarkan tahun (2026 adalah tahun Kuda)
+        const shioList = [
+            "TIKUS", "KERBAU", "HARIMAU", "KELINCI", 
+            "NAGA", "ULAR", "KUDA", "KAMBING", 
+            "MONYET", "AYAM", "ANJING", "BABI"
+        ];
+        
+        // Tahun 2026 adalah tahun Kuda (shio ke-7, index 6)
+        let currentShioIndex = 6; // Kuda
+        
+        // Pool yang sedang dipilih
+        let selectedPool = pools[1]; // Default: TOTO MACAU PAGI
+        
+        // Fungsi untuk menghasilkan angka acak
+        function generateRandomNumber(digits) {
+            let result = "";
+            for (let i = 0; i < digits; i++) {
+                result += Math.floor(Math.random() * 10);
+            }
+            return result;
+        }
+        
+        // Fungsi untuk menghasilkan BBFS acak
+        function generateBBFS() {
+            return generateRandomNumber(8);
+        }
+        
+        // Fungsi untuk menghasilkan beberapa angka dengan format tertentu
+        function generateMultipleNumbers(count, digits, separator = " ") {
+            let numbers = [];
+            for (let i = 0; i < count; i++) {
+                numbers.push(generateRandomNumber(digits));
+            }
+            return numbers.join(separator);
+        }
+        
+        // Fungsi untuk menghasilkan 2D numbers
+        function generate2DNumbers(count) {
+            let numbers = [];
+            for (let i = 0; i < count; i++) {
+                numbers.push(generateRandomNumber(2));
+            }
+            return numbers.join(" ");
+        }
+        
+        // Fungsi untuk menentukan shio berdasarkan angka
+        function getShioFromNumber(number) {
+            // Ambil dua digit terakhir untuk menentukan shio
+            let num = parseInt(number.slice(-2)) % 12;
+            return shioList[num];
+        }
+        
+        // Fungsi untuk mengacak semua prediksi (termasuk BBFS)
+        function acakSemua() {
+            // Update BBFS (8 digit)
+            const bbfs = generateBBFS();
+            document.getElementById('bbfsValue').textContent = bbfs;
+            
+            // AM: 5 digit
+            const am = generateRandomNumber(5);
+            document.getElementById('amValue').textContent = am;
+            
+            // 4D: 4 angka 4 digit
+            const pred4d = generateMultipleNumbers(4, 4);
+            document.getElementById('4dValue').textContent = pred4d;
+            
+            // 3D: 4 angka 3 digit
+            const pred3d = generateMultipleNumbers(4, 3);
+            document.getElementById('3dValue').textContent = pred3d;
+            
+            // 2D: 8 angka 2 digit
+            const pred2d = generate2DNumbers(8);
+            document.getElementById('2dValue').textContent = pred2d;
+            
+            // Colok Bebas: 1 angka
+            const colok1 = generateRandomNumber(1);
+            document.getElementById('colokBebas').textContent = `${colok1} / ${colok1}`;
+            
+            // Colok Bebas 2D: 3 pasang angka 2 digit
+            const colok2d1 = generateRandomNumber(2);
+            const colok2d2 = generateRandomNumber(2);
+            const colok2d3 = colok2d1[0] + colok2d1[0]; // Angka kembar dari digit pertama colok2d1
+            document.getElementById('colokBebas2d').textContent = `${colok2d1} / ${colok2d2} / ${colok2d3}`;
+            
+            // Twin: 3 pasang angka kembar
+            const twin1 = generateRandomNumber(1);
+            const twin2 = generateRandomNumber(1);
+            const twinValue = `${twin1}${twin1} / ${twin1}${twin1} / ${twin2}${twin2}`;
+            document.getElementById('twinValue').textContent = twinValue;
+            
+            // Shio: berdasarkan colok bebas 2D
+            const shio1 = getShioFromNumber(colok2d1);
+            const shio2 = getShioFromNumber(colok2d2);
+            const shio3 = getShioFromNumber(colok2d3);
+            const shioValue = `${shio1} / ${shio2} / ${shio3}`;
+            document.getElementById('shioValue').textContent = shioValue;
+            
+            // Update shio container
+            updateShioContainer(shio1, shio2, shio3);
+            
+            // Update preview format copy
+            updateCopyFormatPreview(
+                bbfs, am, pred4d, pred3d, pred2d, 
+                `${colok1} / ${colok1}`, 
+                `${colok2d1} / ${colok2d2} / ${colok2d3}`, 
+                twinValue, shioValue
+            );
+            
+            // Tampilkan notifikasi
+            showNotification("Semua angka telah diacak!");
+        }
+        
+        // Fungsi untuk update shio container
+        function updateShioContainer(shio1, shio2, shio3) {
+            const shioContainer = document.getElementById('shioContainer');
+            shioContainer.innerHTML = `
+                <div class="shio">${shio1}</div>
+                <div class="shio">${shio2}</div>
+                <div class="shio">${shio3}</div>
+            `;
+        }
+        
+        // Fungsi untuk update preview format copy
+        function updateCopyFormatPreview(bbfs, am, pred4d, pred3d, pred2d, colokBebas, colokBebas2d, twin, shio) {
+            const poolName = document.getElementById('poolTitle').textContent.replace('PREDIKSI ', '');
+            const date = document.getElementById('currentDate').textContent;
+            
+            const preview = `PREDIKSI ${poolName}
+${date}
+BBFS : ${bbfs}
+AM : ${am}
+4D ( BB ) : ${pred4d}
+3D ( BB ) : ${pred3d}
+2D ( BB ) : ${pred2d}
+COLOK BEBAS : ${colokBebas}
+COLOK BEBAS 2D : ${colokBebas2d}
+TWIN : ${twin}
+SHIO : ${shio}
+
+Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
+            
+            document.getElementById('copyFormatPreview').textContent = preview;
+        }
+        
+        // Fungsi untuk mengubah tampilan prediksi berdasarkan pool yang dipilih
+        function selectPool(pool) {
+            selectedPool = pool;
+            
+            // Update judul dengan nama pool yang dipilih
+            document.getElementById('poolTitle').textContent = `PREDIKSI ${pool.name}`;
+            
+            // Otomatis acak angka ketika pool dipilih
+            acakSemua();
+            
+            // Tampilkan notifikasi
+            showNotification(`Prediksi untuk ${pool.name} telah di-generate!`);
+        }
+        
+        // Fungsi untuk menampilkan pools
+        function loadPools() {
+            const poolList = document.getElementById('poolList');
+            const poolCount = document.getElementById('poolCount');
+            
+            poolList.innerHTML = '';
+            poolCount.textContent = `(${pools.length} pools)`;
+            
+            pools.forEach(pool => {
+                const poolItem = document.createElement('div');
+                poolItem.className = 'pool-item';
+                poolItem.innerHTML = `
+                    <h4>${pool.name}</h4>
+                    <p>${pool.desc} ${pool.time ? `- ${pool.time}` : ''}</p>
+                `;
+                
+                // Klik pool untuk memilih
+                poolItem.addEventListener('click', () => {
+                    // Hapus seleksi sebelumnya
+                    document.querySelectorAll('.pool-item').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+                    
+                    // Tambah seleksi pada pool yang diklik
+                    poolItem.classList.add('selected');
+                    
+                    // Pilih pool
+                    selectPool(pool);
+                });
+                
+                poolList.appendChild(poolItem);
+            });
+            
+            // Pilih pool default
+            setTimeout(() => {
+                // Cari pool TOTO MACAU PAGI
+                const macauPool = Array.from(document.querySelectorAll('.pool-item')).find(item => 
+                    item.querySelector('h4').textContent === 'TOTO MACAU PAGI'
+                );
+                if (macauPool) {
+                    macauPool.classList.add('selected');
+                }
+            }, 100);
+        }
+        
+        // Fungsi untuk mencari pools
+        function searchPools() {
+            const searchTerm = document.getElementById('searchPool').value.toLowerCase();
+            const poolItems = document.querySelectorAll('.pool-item');
+            
+            poolItems.forEach(item => {
+                const poolName = item.querySelector('h4').textContent.toLowerCase();
+                if (poolName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Update count
+            const visibleCount = Array.from(poolItems).filter(item => item.style.display !== 'none').length;
+            document.getElementById('poolCount').textContent = `(${visibleCount} pools ditemukan)`;
+        }
+        
+        // Fungsi untuk menyalin prediksi ke clipboard
+        function copyPrediksi() {
+            if (!selectedPool) {
+                showNotification("Silakan pilih pool terlebih dahulu!");
+                return;
+            }
+            
+            const poolName = document.getElementById('poolTitle').textContent.replace('PREDIKSI ', '');
+            const date = document.getElementById('currentDate').textContent;
+            const bbfs = document.getElementById('bbfsValue').textContent;
+            const am = document.getElementById('amValue').textContent;
+            const pred4d = document.getElementById('4dValue').textContent;
+            const pred3d = document.getElementById('3dValue').textContent;
+            const pred2d = document.getElementById('2dValue').textContent;
+            const colokBebas = document.getElementById('colokBebas').textContent;
+            const colokBebas2d = document.getElementById('colokBebas2d').textContent;
+            const twin = document.getElementById('twinValue').textContent;
+            const shio = document.getElementById('shioValue').textContent;
+            
+            // Format teks seperti yang diminta
+            const teksPrediksi = `PREDIKSI ${poolName}
+${date}
+BBFS : ${bbfs}
+AM : ${am}
+4D ( BB ) : ${pred4d}
+3D ( BB ) : ${pred3d}
+2D ( BB ) : ${pred2d}
+COLOK BEBAS : ${colokBebas}
+COLOK BEBAS 2D : ${colokBebas2d}
+TWIN : ${twin}
+SHIO : ${shio}
+
+Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
+            
+            // Salin ke clipboard
+            navigator.clipboard.writeText(teksPrediksi).then(() => {
+                showNotification("Prediksi berhasil disalin ke clipboard!");
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+                showNotification("Gagal menyalin ke clipboard");
+            });
+        }
+        
+        // Fungsi untuk update tanggal
+        function updateDate() {
+            const hari = document.getElementById('hariSelect').value;
+            const tanggal = document.getElementById('tanggalSelect').value;
+            const bulan = document.getElementById('bulanSelect').value;
+            const tahun = document.getElementById('tahunSelect').value;
+            
+            const dateText = `${hari}, ${tanggal} ${bulan} ${tahun}`;
+            document.getElementById('currentDate').textContent = dateText;
+            
+            // Update preview format copy dengan tanggal baru
+            updateCopyFormatPreview(
+                document.getElementById('bbfsValue').textContent,
+                document.getElementById('amValue').textContent,
+                document.getElementById('4dValue').textContent,
+                document.getElementById('3dValue').textContent,
+                document.getElementById('2dValue').textContent,
+                document.getElementById('colokBebas').textContent,
+                document.getElementById('colokBebas2d').textContent,
+                document.getElementById('twinValue').textContent,
+                document.getElementById('shioValue').textContent
+            );
+        }
+        
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            
+            // Sembunyikan notifikasi setelah 3 detik
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Fungsi untuk mengganti background preset
+        function changeBackground(bgClass) {
+            // Hapus semua class background
+            document.body.classList.remove('bg1', 'bg2', 'bg3', 'bg4');
+            
+            // Hapus background image jika ada
+            document.body.style.backgroundImage = 'none';
+            
+            // Tambah class background baru
+            document.body.classList.add(bgClass);
+            
+            // Update tombol background aktif
+            document.querySelectorAll('.bg-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Reset input URL
+            document.getElementById('bgUrlInput').value = '';
+        }
+        
+        // Fungsi untuk menerapkan background custom dari URL
+        function applyCustomBackground() {
+            const bgUrl = document.getElementById('bgUrlInput').value.trim();
+            
+            if (bgUrl) {
+                // Hapus semua class background preset
+                document.body.classList.remove('bg1', 'bg2', 'bg3', 'bg4');
+                
+                // Hapus tombol aktif
+                document.querySelectorAll('.bg-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Terapkan background image
+                document.body.style.backgroundImage = `url('${bgUrl}')`;
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center';
+                document.body.style.backgroundAttachment = 'fixed';
+                
+                showNotification("Background custom telah diterapkan!");
+            } else {
+                showNotification("Masukkan URL gambar terlebih dahulu!");
+            }
+        }
+        
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load pools
+            loadPools();
+            
+            // Update tanggal
+            updateDate();
+            
+            // Event listener untuk tombol acak semua
+            document.getElementById('acakSemua').addEventListener('click', acakSemua);
+            
+            // Event listener untuk tombol salin
+            document.getElementById('copyPrediksi').addEventListener('click', copyPrediksi);
+            
+            // Event listener untuk tombol search
+            document.getElementById('searchBtn').addEventListener('click', searchPools);
+            
+            // Event listener untuk input search (saat tekan enter)
+            document.getElementById('searchPool').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    searchPools();
+                }
+            });
+            
+            // Event listener untuk input search (real-time search)
+            document.getElementById('searchPool').addEventListener('input', searchPools);
+            
+            // Event listener untuk perubahan tanggal
+            document.getElementById('hariSelect').addEventListener('change', updateDate);
+            document.getElementById('tanggalSelect').addEventListener('change', updateDate);
+            document.getElementById('bulanSelect').addEventListener('change', updateDate);
+            document.getElementById('tahunSelect').addEventListener('change', updateDate);
+            
+            // Event listener untuk tombol background preset
+            document.querySelectorAll('.bg-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    changeBackground(this.getAttribute('data-bg'));
+                });
+            });
+            
+            // Event listener untuk tombol apply background custom
+            document.getElementById('applyBgBtn').addEventListener('click', applyCustomBackground);
+            
+            // Event listener untuk input URL background (enter key)
+            document.getElementById('bgUrlInput').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    applyCustomBackground();
+                }
+            });
+            
+            // Inisialisasi preview format copy dengan angka dari gambar
+            updateCopyFormatPreview(
+                "00351297", "15193", "9428 4162 7596 8120", 
+                "013 584 499 291", "21 84 39 09 19 41 05 15",
+                "7 / 7", "61 / 06 / 66", "44 / 44 / 11",
+                "HARIMAU / HARIMAU / KUDA"
+            );
+        });
+    </script>
+</body>
+</html>
