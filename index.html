@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Prediksi Togel | </title>
+    <title>TogelMaster Pro | Generator Prediksi Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -246,7 +246,7 @@
             color: var(--gray);
         }
         
-        /* Style khusus untuk dropdown yang terlihat jelas */
+        /* Style khusus untuk dropdown yang terlihat jelas dan TIDAK ketutup */
         .select-field {
             background: var(--dark);
             border: 1px solid var(--primary);
@@ -256,11 +256,13 @@
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            /* Hapus appearance: none agar dropdown default browser tetap berfungsi */
+            /* appearance: none; */
+            /* Hapus background image custom */
+            /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 18px center;
-            padding-right: 50px;
+            background-position: right 18px center; */
+            padding-right: 18px; /* Kurangi padding kanan */
             transition: var(--transition-normal);
         }
         
@@ -270,10 +272,30 @@
             box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
         }
         
+        /* Style untuk option di dalam select */
         .select-field option {
             background: var(--dark);
             color: var(--light);
-            padding: 10px;
+            padding: 12px;
+            font-size: 15px;
+        }
+        
+        /* Style khusus untuk input number (tahun) */
+        .number-field {
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: var(--transition-normal);
+        }
+        
+        .number-field:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
         }
         
         .date-inputs {
@@ -865,8 +887,8 @@
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Ane Awak</h1>
-                    <p>Bujang</p>
+                    <h1>TogelMaster Pro</h1>
+                    <p>Generator Prediksi Togel Profesional</p>
                 </div>
             </div>
             
@@ -933,7 +955,7 @@
                         
                         <div class="input-group">
                             <label class="input-label">Tanggal</label>
-                            <input type="number" class="select-field" id="dateSelect" min="1" max="31" value="29">
+                            <input type="number" class="number-field" id="dateSelect" min="1" max="31" value="29">
                         </div>
                         
                         <div class="input-group">
@@ -956,7 +978,7 @@
                         
                         <div class="input-group">
                             <label class="input-label">Tahun</label>
-                            <input type="number" class="select-field" id="yearSelect" min="2024" max="2030" value="2026">
+                            <input type="number" class="number-field" id="yearSelect" min="2024" max="2030" value="2026">
                         </div>
                     </div>
                 </div>
@@ -1139,7 +1161,7 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
                             </div>
                             <div class="contact-text">
                                 <h4>Telegram Resmi</h4>
-                                <p>@BelumAdaIdTeleAne</p>
+                                <p>@TogelMasterPro</p>
                             </div>
                         </div>
                         
@@ -1163,7 +1185,7 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
             <!-- Copyright -->
             <div class="footer-credits">
                 <p style="text-align: center; color: var(--gray); font-size: 14px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
-                    <i class="far fa-copyright"></i> Generator Togel | Generator Prediksi | 
+                    <i class="far fa-copyright"></i> 2026 TogelMaster Pro | Generator Prediksi Profesional | 
                     <span style="color: var(--secondary);">Angka hanyalah prediksi, gunakan dengan bijak</span>
                 </p>
             </div>
@@ -1564,7 +1586,7 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             
             // Contact button
             document.getElementById('contactBtn').addEventListener('click', function() {
-                const teleLink = "https://t.me/Comingsoon";
+                const teleLink = "https://t.me/TogelMasterPro";
                 window.open(teleLink, '_blank');
                 showNotification('Membuka Telegram...', 'success');
             });
