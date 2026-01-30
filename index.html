@@ -1591,12 +1591,12 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
                 showNotification('Membuka Telegram...', 'success');
             });
             
-            // Auto-update every 5 minutes
+            // Auto-update every 20 seconds
             setInterval(() => {
                 if (autoUpdateEnabled) {
                     generateAllPredictions();
                 }
-            }, 300000); // 5 minutes
+            }, 20000); // 20 seconds
             
             // Keyboard shortcut hanya Ctrl+G
             document.addEventListener('keydown', (e) => {
@@ -1625,6 +1625,7 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
     </script>
 </body>
 </html>
+
 
 
 
