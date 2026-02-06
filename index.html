@@ -42,6 +42,19 @@
             --transition-slow: 350ms ease;
         }
         
+        /* Light Theme Variables */
+        :root[data-theme="light"] {
+            --dark: #f8f9fa;
+            --darker: #e9ecef;
+            --light: #121826;
+            --gray: #6c757d;
+            --gray-light: #adb5bd;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(67, 97, 238, 0.15);
+            --glass-bg: rgba(18, 24, 38, 0.05);
+            --glass-border: rgba(18, 24, 38, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -58,13 +71,8 @@
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(239, 71, 111, 0.1) 0%, transparent 20%);
+            transition: background-color var(--transition-normal), color var(--transition-normal);
         }
-        
-        /* Background Themes */
-        body.theme-dark { background: var(--darker); }
-        body.theme-blue { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        body.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
-        body.theme-green { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); }
         
         /* Container */
         .app-container {
@@ -84,6 +92,7 @@
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
+            transition: all var(--transition-normal);
         }
         
         .app-header::before {
@@ -145,6 +154,7 @@
             padding: 15px 25px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--glass-border);
+            transition: all var(--transition-normal);
         }
         
         .pool-name {
@@ -179,6 +189,7 @@
             font-weight: 600;
             color: var(--secondary);
             text-align: center;
+            transition: all var(--transition-normal);
         }
         
         .realtime-clock {
@@ -206,6 +217,7 @@
             margin-bottom: 30px;
             border: 1px solid var(--card-border);
             box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
         }
         
         .panel-grid {
@@ -246,7 +258,44 @@
             color: var(--gray);
         }
         
-        /* Style khusus untuk dropdown yang terlihat jelas dan TIDAK ketutup */
+        /* Style untuk date picker */
+        .date-picker-container {
+            grid-column: span 4;
+        }
+        
+        .date-picker-field {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .date-picker-field:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
+        }
+        
+        /* Style khusus untuk input date */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.5);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: var(--transition-normal);
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator:hover {
+            filter: invert(0.3);
+        }
+        
+        /* Select field */
         .select-field {
             background: var(--dark);
             border: 1px solid var(--primary);
@@ -256,13 +305,6 @@
             font-family: 'Inter', sans-serif;
             font-size: 15px;
             cursor: pointer;
-            /* Hapus appearance: none agar dropdown default browser tetap berfungsi */
-            /* appearance: none; */
-            /* Hapus background image custom */
-            /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 18px center; */
-            padding-right: 18px; /* Kurangi padding kanan */
             transition: var(--transition-normal);
         }
         
@@ -272,36 +314,11 @@
             box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
         }
         
-        /* Style untuk option di dalam select */
         .select-field option {
             background: var(--dark);
             color: var(--light);
             padding: 12px;
             font-size: 15px;
-        }
-        
-        /* Style khusus untuk input number (tahun) */
-        .number-field {
-            background: var(--dark);
-            border: 1px solid var(--primary);
-            border-radius: var(--radius-md);
-            padding: 14px 18px;
-            color: var(--light);
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            transition: var(--transition-normal);
-        }
-        
-        .number-field:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
-        }
-        
-        .date-inputs {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
         }
         
         /* Buttons */
@@ -386,6 +403,7 @@
             padding: 35px;
             border: 1px solid var(--card-border);
             box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
         }
         
         .card-header {
@@ -489,6 +507,7 @@
             height: fit-content;
             position: sticky;
             top: 30px;
+            transition: all var(--transition-normal);
         }
         
         .sidebar-header {
@@ -615,6 +634,7 @@
             border: 1px solid var(--card-border);
             box-shadow: var(--shadow-lg);
             margin-top: 30px;
+            transition: all var(--transition-normal);
         }
         
         .footer-grid {
@@ -699,40 +719,43 @@
             color: var(--gray);
         }
         
-        /* Theme Selector */
-        .theme-selector {
+        /* Theme Toggle */
+        .theme-toggle {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
             z-index: 100;
         }
         
-        .theme-btn {
-            width: 50px;
-            height: 50px;
+        .theme-toggle-btn {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             border: 2px solid var(--glass-border);
+            background: var(--card-bg);
+            color: var(--light);
             cursor: pointer;
             transition: var(--transition-normal);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 18px;
-            background: var(--card-bg);
-            box-shadow: var(--shadow-md);
+            font-size: 24px;
+            box-shadow: var(--shadow-lg);
         }
         
-        .theme-btn:hover {
+        .theme-toggle-btn:hover {
             transform: scale(1.1);
+            border-color: var(--secondary);
         }
         
-        .theme-btn.active {
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.3);
+        .theme-toggle-btn.dark-mode {
+            background: linear-gradient(135deg, #121826, #0a0d14);
+            color: #f8f9fa;
+        }
+        
+        .theme-toggle-btn.light-mode {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #121826;
         }
         
         /* Notifications */
@@ -783,8 +806,8 @@
                 width: 100%;
             }
             
-            .date-inputs {
-                grid-template-columns: 1fr;
+            .date-picker-container {
+                grid-column: span 1;
             }
             
             .predictions-card {
@@ -807,14 +830,15 @@
                 grid-template-columns: 1fr;
             }
             
-            .theme-selector {
+            .theme-toggle {
                 bottom: 20px;
                 right: 20px;
             }
             
-            .theme-btn {
-                width: 45px;
-                height: 45px;
+            .theme-toggle-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
@@ -878,7 +902,7 @@
         }
     </style>
 </head>
-<body class="theme-dark">
+<body>
     <div class="app-container">
         <!-- Header -->
         <header class="app-header">
@@ -940,45 +964,9 @@
                     </h3>
                     
                     <div class="date-inputs">
-                        <div class="input-group">
-                            <label class="input-label">Hari</label>
-                            <select class="select-field" id="daySelect">
-                                <option value="SENIN">SENIN</option>
-                                <option value="SELASA">SELASA</option>
-                                <option value="RABU">RABU</option>
-                                <option value="KAMIS" selected>KAMIS</option>
-                                <option value="JUMAT">JUMAT</option>
-                                <option value="SABTU">SABTU</option>
-                                <option value="MINGGU">MINGGU</option>
-                            </select>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label class="input-label">Tanggal</label>
-                            <input type="number" class="number-field" id="dateSelect" min="1" max="31" value="29">
-                        </div>
-                        
-                        <div class="input-group">
-                            <label class="input-label">Bulan</label>
-                            <select class="select-field" id="monthSelect">
-                                <option value="Januari" selected>Januari</option>
-                                <option value="Februari">Februari</option>
-                                <option value="Maret">Maret</option>
-                                <option value="April">April</option>
-                                <option value="Mei">Mei</option>
-                                <option value="Juni">Juni</option>
-                                <option value="Juli">Juli</option>
-                                <option value="Agustus">Agustus</option>
-                                <option value="September">September</option>
-                                <option value="Oktober">Oktober</option>
-                                <option value="November">November</option>
-                                <option value="Desember">Desember</option>
-                            </select>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label class="input-label">Tahun</label>
-                            <input type="number" class="number-field" id="yearSelect" min="2024" max="2030" value="2026">
+                        <div class="input-group date-picker-container">
+                            <label class="input-label">Pilih Tanggal</label>
+                            <input type="date" class="date-picker-field" id="datePicker">
                         </div>
                     </div>
                 </div>
@@ -1192,19 +1180,10 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
         </footer>
     </div>
     
-    <!-- Theme Selector -->
-    <div class="theme-selector">
-        <button class="theme-btn active" data-theme="dark" title="Dark Theme">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button class="theme-toggle-btn dark-mode" id="themeToggleBtn" title="Toggle Light/Dark Mode">
             <i class="fas fa-moon"></i>
-        </button>
-        <button class="theme-btn" data-theme="blue" title="Blue Theme">
-            <i class="fas fa-droplet"></i>
-        </button>
-        <button class="theme-btn" data-theme="purple" title="Purple Theme">
-            <i class="fas fa-gem"></i>
-        </button>
-        <button class="theme-btn" data-theme="green" title="Green Theme">
-            <i class="fas fa-leaf"></i>
         </button>
     </div>
     
@@ -1275,10 +1254,20 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
             "MONYET", "AYAM", "ANJING", "BABI"
         ];
 
+        // Days in Indonesian
+        const daysInIndonesian = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
+        
+        // Months in Indonesian
+        const monthsInIndonesian = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+
         // Current state
         let currentPool = poolsData[1]; // Default: TOTO MACAU PAGI
         let autoUpdateEnabled = true;
         let lastGenerated = null;
+        let isDarkMode = true;
 
         // Fungsi untuk update jam realtime
         function updateRealtimeClock() {
@@ -1289,6 +1278,16 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI
             
             const timeString = `${hours}:${minutes}:${seconds}`;
             document.getElementById('clockTime').textContent = timeString;
+        }
+
+        // Format date to Indonesian format
+        function formatDateToIndonesian(date) {
+            const day = daysInIndonesian[date.getDay()];
+            const dateNum = date.getDate();
+            const month = monthsInIndonesian[date.getMonth()];
+            const year = date.getFullYear();
+            
+            return `${day}, ${dateNum} ${month} ${year}`;
         }
 
         // Utility functions
@@ -1474,14 +1473,35 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             document.getElementById('poolsCount').textContent = `${visibleCount} Pools ditemukan`;
         }
 
-        // Update date
-        function updateDate() {
-            const day = document.getElementById('daySelect').value;
-            const date = document.getElementById('dateSelect').value;
-            const month = document.getElementById('monthSelect').value;
-            const year = document.getElementById('yearSelect').value;
+        // Initialize date picker
+        function initializeDatePicker() {
+            const datePicker = document.getElementById('datePicker');
             
-            const dateText = `${day}, ${date} ${month} ${year}`;
+            // Set today as default
+            const today = new Date();
+            const formattedToday = today.toISOString().split('T')[0];
+            datePicker.value = formattedToday;
+            
+            // Update date display
+            updateDateDisplay(today);
+            
+            // Add event listener
+            datePicker.addEventListener('change', function() {
+                const selectedDate = new Date(this.value);
+                updateDateDisplay(selectedDate);
+                
+                // Auto generate if enabled
+                if (autoUpdateEnabled) {
+                    generateAllPredictions();
+                }
+                
+                showNotification('Tanggal diperbarui', 'success');
+            });
+        }
+
+        // Update date display
+        function updateDateDisplay(date) {
+            const dateText = formatDateToIndonesian(date);
             document.getElementById('currentDate').textContent = dateText;
             
             // Update copy format with new date
@@ -1489,6 +1509,47 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             const lines = formatText.split('\n');
             lines[1] = dateText;
             document.getElementById('copyFormat').textContent = lines.join('\n');
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            
+            if (isDarkMode) {
+                // Switch to dark mode
+                document.documentElement.removeAttribute('data-theme');
+                document.getElementById('themeToggleBtn').className = 'theme-toggle-btn dark-mode';
+                document.getElementById('themeToggleBtn').innerHTML = '<i class="fas fa-moon"></i>';
+                document.getElementById('themeToggleBtn').title = 'Switch to Light Mode';
+            } else {
+                // Switch to light mode
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.getElementById('themeToggleBtn').className = 'theme-toggle-btn light-mode';
+                document.getElementById('themeToggleBtn').innerHTML = '<i class="fas fa-sun"></i>';
+                document.getElementById('themeToggleBtn').title = 'Switch to Dark Mode';
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        // Load theme from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            
+            if (savedTheme === 'light') {
+                isDarkMode = false;
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.getElementById('themeToggleBtn').className = 'theme-toggle-btn light-mode';
+                document.getElementById('themeToggleBtn').innerHTML = '<i class="fas fa-sun"></i>';
+                document.getElementById('themeToggleBtn').title = 'Switch to Dark Mode';
+            } else {
+                isDarkMode = true;
+                document.documentElement.removeAttribute('data-theme');
+                document.getElementById('themeToggleBtn').className = 'theme-toggle-btn dark-mode';
+                document.getElementById('themeToggleBtn').innerHTML = '<i class="fas fa-moon"></i>';
+                document.getElementById('themeToggleBtn').title = 'Switch to Light Mode';
+            }
         }
 
         // Copy format to clipboard
@@ -1528,28 +1589,20 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             }, 3000);
         }
 
-        // Change theme
-        function changeTheme(theme) {
-            document.body.className = `theme-${theme}`;
-            
-            // Update active theme button
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Load theme
+            loadTheme();
+            
             // Start realtime clock
             updateRealtimeClock();
             setInterval(updateRealtimeClock, 1000);
             
+            // Initialize date picker
+            initializeDatePicker();
+            
             // Load pools
             loadPoolsList();
-            
-            // Update date
-            updateDate();
             
             // Generate initial predictions
             generateAllPredictions();
@@ -1563,12 +1616,6 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
             // Search
             document.getElementById('poolsSearch').addEventListener('input', searchPools);
             
-            // Date controls
-            document.getElementById('daySelect').addEventListener('change', updateDate);
-            document.getElementById('dateSelect').addEventListener('change', updateDate);
-            document.getElementById('monthSelect').addEventListener('change', updateDate);
-            document.getElementById('yearSelect').addEventListener('change', updateDate);
-            
             // Auto generate select
             document.getElementById('autoGenerateSelect').addEventListener('change', function() {
                 autoUpdateEnabled = this.value === 'true';
@@ -1577,12 +1624,8 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
                 badge.className = autoUpdateEnabled ? 'badge badge-success' : 'badge badge-info';
             });
             
-            // Theme buttons
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    changeTheme(this.dataset.theme);
-                });
-            });
+            // Theme toggle
+            document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
             
             // Contact button
             document.getElementById('contactBtn').addEventListener('click', function() {
@@ -1625,7 +1668,3 @@ Biasakan UPS - UTAMAKAN PREDIKSI SENDIRI`;
     </script>
 </body>
 </html>
-
-
-
-
